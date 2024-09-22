@@ -5,9 +5,13 @@
   home.username = "amund";
   home.homeDirectory = "/home/amund";
   home.stateVersion = "23.05";
+
+  imports = [
+    ./apps/nvim.nix
+  ];
+
   home.packages = with pkgs; [
     git
-    neovim
     signal-desktop
     _1password-gui
     # Resource monitor
@@ -15,7 +19,9 @@
     gtop
     lm_sensors
   ];
+
   programs.home-manager.enable = true;
+
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
