@@ -18,10 +18,16 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     homeConfigurations = {
-      amund = home-manager.lib.homeManagerConfiguration {
+      "amund@home" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home-manager/home.nix
+        ];
+      };
+      "amund@amund-evyon" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home-manager/evyon.nix
         ];
       };
     };
