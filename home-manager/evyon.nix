@@ -19,6 +19,7 @@
     gtop
     lm_sensors
     gnomeExtensions.tiling-assistant
+    typst
   ];
 
   programs.home-manager.enable = true;
@@ -43,6 +44,12 @@
       show-fan = false;
       show-system = false;
       show-storage = false;
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+	switch-windows = ["<Alt>Tab"];
+	switch-windows-backward = ["<Shift><Alt>Tab"];
+	switch-applications = [];
+	switch-applications-backward = [];
     };
   };
 }
