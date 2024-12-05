@@ -27,18 +27,23 @@ in
     typst
     eza
     bash
+    cargo
+    rustc
   ];
 
 
   # Home-manager options list https://home-manager-options.extranix.com/?
-  home.sessionVariables = {
-    PS1="${GREEN}\\u@\\h${NOCOL}:${GREEN}\\w${NOCOL}\\$ ";
-  };
+  #home.sessionVariables = {
+  #};
 
   programs.home-manager.enable = true;
   programs.bash = {
     enable = true;
     enableCompletion = true;
+    sessionVariables = {
+      PS1="${GREEN}\\u@\\h${NOCOL}:${GREEN}\\w${NOCOL}\\$ ";
+      EDITOR = "nvim";
+    };
     shellAliases = {
       ls="eza --long --git";
     };
