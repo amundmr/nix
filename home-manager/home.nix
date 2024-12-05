@@ -18,6 +18,7 @@
     gnomeExtensions.vitals # dep on gtop & lm_sensors
     gtop
     lm_sensors
+    eza
   ];
 
   programs.home-manager.enable = true;

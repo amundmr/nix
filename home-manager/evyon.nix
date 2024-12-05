@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  GREEN = "\\[\\033[0;32m\\]";
+  NOCOL = "\\[\\033[0m\\]";
+in
+
 {
   nixpkgs.config.allowUnfree = true; # Required by 1password
   home.username = "amund";
@@ -20,9 +25,30 @@
     lm_sensors
     gnomeExtensions.tiling-assistant
     typst
+    eza
+    bash
   ];
 
+
+  # Home-manager options list https://home-manager-options.extranix.com/?
+  home.sessionVariables = {
+    PS1="${GREEN}\\u@\\h${NOCOL}:${GREEN}\\w${NOCOL}\\$ ";
+  };
+
   programs.home-manager.enable = true;
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    shellAliases = {
+      ls="eza --long --git";
+    };
+    initExtra = ''
+      if [ -f ~/.profile ]; then
+        source ~/.profile
+      fi
+    '';
+  };
+
 
   dconf.settings = {
     "org/gnome/shell" = {
