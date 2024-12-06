@@ -29,6 +29,7 @@ in
     bash
     cargo
     rustc
+    shell-gpt
   ];
 
 
