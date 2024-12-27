@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  GREEN = "\\[\\033[0;32m\\]";
+  NOCOL = "\\[\\033[0m\\]";
+in
+
 {
   nixpkgs.config.allowUnfree = true; # Required by 1password
   home.username = "amund";
@@ -18,20 +23,45 @@
     gnomeExtensions.vitals # dep on gtop & lm_sensors
     gtop
     lm_sensors
+    gnomeExtensions.tiling-assistant
+    typst
     eza
+    bash
+    cargo
+    rustc
+    shell-gpt
   ];
 
+
+  # Home-manager options list https://home-manager-options.extranix.com/?
+  #home.sessionVariables = {
+  #};
+
   programs.home-manager.enable = true;
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    sessionVariables = {
+      PS1="${GREEN}\\u@\\h${NOCOL}:${GREEN}\\w${NOCOL}\\$ ";
+      EDITOR = "nvim";
+    };
+    shellAliases = {
+      ls="eza --long --git";
+    };
+    initExtra = ''
+      if [ -f ~/.profile ]; then
+        source ~/.profile
+      fi
+    '';
+  };
+
 
   dconf.settings = {
-    "org/gnome/settings-daemon/plugins/color" = {
-      night-light-enabled = true;
-      night-light-schedule-automatic = true;
-    };
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [
         vitals.extensionUuid
+        tiling-assistant.extensionUuid
       ];
     };
     "org/gnome/shell/extensions/vitals" = {
@@ -46,6 +76,12 @@
       show-fan = false;
       show-system = false;
       show-storage = false;
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+	switch-windows = ["<Alt>Tab"];
+	switch-windows-backward = ["<Shift><Alt>Tab"];
+	switch-applications = [];
+	switch-applications-backward = [];
     };
   };
 }

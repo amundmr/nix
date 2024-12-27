@@ -5,8 +5,10 @@ Followed [this](https://tech.aufomm.com/my-nix-journey-use-nix-with-ubuntu/) gui
 **Update nix after changing configuration**
 
 ```bash
-home-manager switch --flake /home/amund/nix/#$USER
+home-manager switch --flake .
 ```
+
+Home-manager will automatically call the `.nix` file that matches your username according to `flake.nix`
 
 **Update packages in flake**
 
