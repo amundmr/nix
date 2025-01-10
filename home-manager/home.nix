@@ -19,6 +19,7 @@
     gtop
     lm_sensors
     eza
+    screen
   ];
 
   programs.home-manager.enable = true;
