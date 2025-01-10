@@ -6,23 +6,28 @@ let
 in
 
 {
-  nixpkgs.config.allowUnfree = true; # Required by 1password
+  nixpkgs.config = {
+    allowUnfree = true; # Required by 1password
+  };
   home.username = "amund";
   home.homeDirectory = "/home/amund";
   home.stateVersion = "23.05";
 
   imports = [
     ./apps/nvim.nix
+    ./systemd_timers/google_drive_rsync.nix
   ];
 
   home.packages = with pkgs; [
     git
     signal-desktop
     _1password-gui
+    google-chrome
     # Resource monitor
     gnomeExtensions.vitals # dep on gtop & lm_sensors
     gtop
     lm_sensors
+
     gnomeExtensions.tiling-assistant
     typst
     eza
@@ -54,7 +59,6 @@ in
       fi
     '';
   };
-
 
   dconf.settings = {
     "org/gnome/shell" = {
