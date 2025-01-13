@@ -35,12 +35,15 @@ in
     cargo
     rustc
     shell-gpt
+    rclone
   ];
 
 
   # Home-manager options list https://home-manager-options.extranix.com/?
   #home.sessionVariables = {
   #};
+
+  #xdg.configFile."rclone/rclone.conf".text = '' ''; # TODO: paste my ~/.config/rclone/rclone.conf here. Requires password
 
   programs.home-manager.enable = true;
   programs.bash = {

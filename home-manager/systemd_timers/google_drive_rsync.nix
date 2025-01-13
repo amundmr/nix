@@ -38,9 +38,10 @@
 
   systemd.user.timers = {
     backup_google_drive = {
+      # Unit = # Not required, as it by default selects the service with the same name
       Unit.Description = "Hourly timer for Backup to Google Drive";
       Timer = {
-        OnCalendar = "*-*-* *:18:00";
+        OnCalendar = "*-*-* *:50:00";
 	Persistent = true;
       };
       Install.WantedBy = [ "timers.target" ];
