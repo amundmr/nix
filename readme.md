@@ -1,5 +1,7 @@
 Followed [this](https://tech.aufomm.com/my-nix-journey-use-nix-with-ubuntu/) guide.
 
+Install nix from here https://github.com/DeterminateSystems/nix-installer
+
 # Cheatsheet
 
 **Update nix after changing configuration**

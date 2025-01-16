@@ -21,11 +21,12 @@ in
   home.packages = with pkgs; [
     git
     signal-desktop
+    slack
     _1password-gui
-    google-chrome
     # Resource monitor
     gnomeExtensions.vitals # dep on gtop & lm_sensors
     gtop
+    htop
     lm_sensors
 
     gnomeExtensions.tiling-assistant
@@ -36,6 +37,7 @@ in
     rustc
     shell-gpt
     rclone
+    vscodium
   ];
 
 
@@ -43,7 +45,7 @@ in
   #home.sessionVariables = {
   #};
 
-  #xdg.configFile."rclone/rclone.conf".text = '' ''; # TODO: paste my ~/.config/rclone/rclone.conf here. Requires password
+  #xdg.configFile."rclone/rclone.conf".text = '' ''; # Don't use this(password and secret will be saved, and auth token may be overwritten by an old one every time home manager switches). Go through the rclone config in stead.
 
   programs.home-manager.enable = true;
   programs.bash = {
@@ -89,6 +91,17 @@ in
 	switch-windows-backward = ["<Shift><Alt>Tab"];
 	switch-applications = [];
 	switch-applications-backward = [];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      "custom-keybindings" = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "binding" = "<Control><Alt>t";
+      "command" = "ptyxis -s";
+      "name" = "Open terminal";
     };
   };
 }
