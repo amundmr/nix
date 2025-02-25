@@ -16,7 +16,6 @@ in
   imports = [
     ./apps/nvim.nix
     ./systemd_timers/google_drive_rsync.nix
-    ./NAT_forward.nix
   ];
 
   home.packages = with pkgs; [
