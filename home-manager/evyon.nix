@@ -16,6 +16,7 @@ in
   imports = [
     ./apps/nvim.nix
     ./systemd_timers/google_drive_rsync.nix
+    ./NAT_forward.nix
   ];
 
   home.packages = with pkgs; [
@@ -38,6 +39,11 @@ in
     shell-gpt
     rclone
     vscodium
+    zotero
+    remmina
+    speedcrunch
+    realvnc-vnc-viewer
+    wireshark
   ];
 
 
@@ -59,6 +65,8 @@ in
       ls="eza --long --git";
     };
     initExtra = ''
+    export PATH="$PATH:/home/amund/.cargo/bin"
+    export PATH="$PATH:$HOME/.local/bin"
       if [ -f ~/.profile ]; then
         source ~/.profile
       fi
