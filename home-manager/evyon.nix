@@ -66,6 +66,7 @@ in
     initExtra = ''
     export PATH="$PATH:/home/amund/.cargo/bin"
     export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$PATH:$HOME/Documents/dev/flutter/bin"
       if [ -f ~/.profile ]; then
         source ~/.profile
       fi
