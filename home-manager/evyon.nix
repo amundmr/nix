@@ -33,8 +33,7 @@ in
     typst
     eza
     bash
-    cargo
-    rustc
+    rustup
     shell-gpt
     rclone
     vscodium
@@ -64,6 +63,7 @@ in
       ls="eza --long --git";
     };
     initExtra = ''
+    export PATH="$PATH":"$HOME/.pub-cache/bin"
     export PATH="$PATH:/home/amund/.cargo/bin"
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$HOME/Documents/dev/flutter/bin"
